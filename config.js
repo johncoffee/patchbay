@@ -18,7 +18,9 @@ exports.create = (api) => {
       config.keys = ssbKeys.loadOrCreateSync(Path.join(config.path, 'secret'))
 
       // HACK: fix offline on windows by specifying 127.0.0.1 instead of localhost (default)
-      config.remote = `net:127.0.0.1:${config.port}~shs:${config.keys.id.slice(1).replace('.ed25519', '')}`
+      //config.remote = `net:127.0.0.1:${config.port}~shs:${config.keys.id.slice(1).replace('.ed25519', '')}`
+      const sockPath = Path.join(config.path, "socket")
+      config.remote= `unix:${sockPath}~noauth:unused`
     }
     return config
   })
