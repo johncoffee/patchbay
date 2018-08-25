@@ -29,7 +29,7 @@ exports.create = function (api) {
     }
 
     const input = h('input', {
-      type: 'search',
+      type: 'text',
       placeholder: '?search, @name, #channel',
       'ev-keyup': ev => {
         switch (ev.keyCode) {
